@@ -89,10 +89,19 @@ build_triplet = @build@
 host_triplet = @host@
 subdir = man
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
-am__aclocal_m4_deps = $(top_srcdir)/build-aux/m4/ax_append_flag.m4 \
+am__aclocal_m4_deps =  \
+	$(top_srcdir)/build-aux/m4/ax_ac_append_to_file.m4 \
+	$(top_srcdir)/build-aux/m4/ax_ac_print_to_file.m4 \
+	$(top_srcdir)/build-aux/m4/ax_add_am_macro_static.m4 \
+	$(top_srcdir)/build-aux/m4/ax_add_recursive_am_macro_static.m4 \
+	$(top_srcdir)/build-aux/m4/ax_am_macros_static.m4 \
+	$(top_srcdir)/build-aux/m4/ax_append_flag.m4 \
 	$(top_srcdir)/build-aux/m4/ax_cflags_warn_all.m4 \
 	$(top_srcdir)/build-aux/m4/ax_check_enable_debug.m4 \
+	$(top_srcdir)/build-aux/m4/ax_dist_rpm.m4 \
+	$(top_srcdir)/build-aux/m4/ax_file_escapes.m4 \
 	$(top_srcdir)/build-aux/m4/ax_func_snprintf.m4 \
+	$(top_srcdir)/build-aux/m4/ax_install_files.m4 \
 	$(top_srcdir)/build-aux/m4/ax_is_release.m4 \
 	$(top_srcdir)/build-aux/m4/ax_require_defined.m4 \
 	$(top_srcdir)/build-aux/m4/ax_with_curses.m4 \
@@ -178,6 +187,7 @@ AUTOCONF = @AUTOCONF@
 AUTOHEADER = @AUTOHEADER@
 AUTOMAKE = @AUTOMAKE@
 AWK = @AWK@
+AX_RPM_SPEC_FILE = @AX_RPM_SPEC_FILE@
 CC = @CC@
 CFLAGS = @CFLAGS@
 CPP = @CPP@
@@ -189,8 +199,10 @@ DEFS = @DEFS@
 ECHO_C = @ECHO_C@
 ECHO_N = @ECHO_N@
 ECHO_T = @ECHO_T@
+EDITOR = @EDITOR@
 EGREP = @EGREP@
 EXEEXT = @EXEEXT@
+GAWK = @GAWK@
 GETTEXT_MACRO_VERSION = @GETTEXT_MACRO_VERSION@
 GMSGFMT = @GMSGFMT@
 GMSGFMT_015 = @GMSGFMT_015@
@@ -229,8 +241,10 @@ PATH_SEPARATOR = @PATH_SEPARATOR@
 PKG_CONFIG = @PKG_CONFIG@
 PKG_CONFIG_LIBDIR = @PKG_CONFIG_LIBDIR@
 PKG_CONFIG_PATH = @PKG_CONFIG_PATH@
+PLATFORM_SUFFIX = @PLATFORM_SUFFIX@
 POSUB = @POSUB@
 RANLIB = @RANLIB@
+RPM = @RPM@
 SED = @SED@
 SET_MAKE = @SET_MAKE@
 SHELL = @SHELL@

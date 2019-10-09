@@ -1,4 +1,4 @@
-AC_INIT([rmw], [0.7.05-dev], [https://github.com/theimpossibleastronaut/rmw/issues],,[https://remove-to-waste.info/])
+AC_INIT([rmw], [0.7.05], [https://github.com/theimpossibleastronaut/rmw/issues],,[https://remove-to-waste.info/])
 AC_CONFIG_AUX_DIR([build-aux])
 AM_INIT_AUTOMAKE([-Wall subdir-objects foreign no-dependencies])
 AM_SILENT_RULES([yes])
@@ -62,6 +62,9 @@ fi
 
 AM_GNU_GETTEXT([external], [need-formatstring-macros])
 AM_GNU_GETTEXT_VERSION([0.19.8])
+
+AX_ADD_AM_MACRO_STATIC([])
+AX_DIST_RPM([packaging/rmw-rpm.spec])
 
 AC_CONFIG_FILES([       Makefile
                         src/Makefile

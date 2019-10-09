@@ -14,6 +14,9 @@
 
 @SET_MAKE@
 
+# aminclude_static.am generated automatically by Autoconf
+# from AX_AM_MACROS_STATIC on Wed 09 Oct 2019 06:23:52 PM CDT
+
 VPATH = @srcdir@
 am__is_gnu_make = { \
   if test -z '$(MAKELEVEL)'; then \
@@ -90,10 +93,19 @@ build_triplet = @build@
 host_triplet = @host@
 subdir = .
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
-am__aclocal_m4_deps = $(top_srcdir)/build-aux/m4/ax_append_flag.m4 \
+am__aclocal_m4_deps =  \
+	$(top_srcdir)/build-aux/m4/ax_ac_append_to_file.m4 \
+	$(top_srcdir)/build-aux/m4/ax_ac_print_to_file.m4 \
+	$(top_srcdir)/build-aux/m4/ax_add_am_macro_static.m4 \
+	$(top_srcdir)/build-aux/m4/ax_add_recursive_am_macro_static.m4 \
+	$(top_srcdir)/build-aux/m4/ax_am_macros_static.m4 \
+	$(top_srcdir)/build-aux/m4/ax_append_flag.m4 \
 	$(top_srcdir)/build-aux/m4/ax_cflags_warn_all.m4 \
 	$(top_srcdir)/build-aux/m4/ax_check_enable_debug.m4 \
+	$(top_srcdir)/build-aux/m4/ax_dist_rpm.m4 \
+	$(top_srcdir)/build-aux/m4/ax_file_escapes.m4 \
 	$(top_srcdir)/build-aux/m4/ax_func_snprintf.m4 \
+	$(top_srcdir)/build-aux/m4/ax_install_files.m4 \
 	$(top_srcdir)/build-aux/m4/ax_is_release.m4 \
 	$(top_srcdir)/build-aux/m4/ax_require_defined.m4 \
 	$(top_srcdir)/build-aux/m4/ax_with_curses.m4 \
@@ -117,7 +129,7 @@ am__CONFIG_DISTCLEAN_FILES = config.status config.cache config.log \
  configure.lineno config.status.lineno
 mkinstalldirs = $(install_sh) -d
 CONFIG_HEADER = $(top_builddir)/src/config.h
-CONFIG_CLEAN_FILES =
+CONFIG_CLEAN_FILES = packaging/rmw-rpm.spec
 CONFIG_CLEAN_VPATH_FILES =
 AM_V_P = $(am__v_P_@AM_V@)
 am__v_P_ = $(am__v_P_@AM_DEFAULT_V@)
@@ -207,14 +219,15 @@ ETAGS = etags
 CTAGS = ctags
 CSCOPE = cscope
 DIST_SUBDIRS = $(SUBDIRS)
-am__DIST_COMMON = $(srcdir)/Makefile.in $(top_srcdir)/build-aux/ar-lib \
-	$(top_srcdir)/build-aux/compile \
+am__DIST_COMMON = $(srcdir)/Makefile.in $(srcdir)/aminclude_static.am \
+	$(top_srcdir)/build-aux/ar-lib $(top_srcdir)/build-aux/compile \
 	$(top_srcdir)/build-aux/config.guess \
 	$(top_srcdir)/build-aux/config.rpath \
 	$(top_srcdir)/build-aux/config.sub \
 	$(top_srcdir)/build-aux/install-sh \
-	$(top_srcdir)/build-aux/missing ABOUT-NLS COPYING ChangeLog \
-	THANKS build-aux/ar-lib build-aux/compile \
+	$(top_srcdir)/build-aux/missing \
+	$(top_srcdir)/packaging/rmw-rpm.spec.in ABOUT-NLS COPYING \
+	ChangeLog THANKS build-aux/ar-lib build-aux/compile \
 	build-aux/config.guess build-aux/config.rpath \
 	build-aux/config.sub build-aux/install-sh build-aux/missing
 DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)
@@ -267,6 +280,7 @@ AUTOCONF = @AUTOCONF@
 AUTOHEADER = @AUTOHEADER@
 AUTOMAKE = @AUTOMAKE@
 AWK = @AWK@
+AX_RPM_SPEC_FILE = @AX_RPM_SPEC_FILE@
 CC = @CC@
 CFLAGS = @CFLAGS@
 CPP = @CPP@
@@ -278,8 +292,10 @@ DEFS = @DEFS@
 ECHO_C = @ECHO_C@
 ECHO_N = @ECHO_N@
 ECHO_T = @ECHO_T@
+EDITOR = @EDITOR@
 EGREP = @EGREP@
 EXEEXT = @EXEEXT@
+GAWK = @GAWK@
 GETTEXT_MACRO_VERSION = @GETTEXT_MACRO_VERSION@
 GMSGFMT = @GMSGFMT@
 GMSGFMT_015 = @GMSGFMT_015@
@@ -318,8 +334,10 @@ PATH_SEPARATOR = @PATH_SEPARATOR@
 PKG_CONFIG = @PKG_CONFIG@
 PKG_CONFIG_LIBDIR = @PKG_CONFIG_LIBDIR@
 PKG_CONFIG_PATH = @PKG_CONFIG_PATH@
+PLATFORM_SUFFIX = @PLATFORM_SUFFIX@
 POSUB = @POSUB@
 RANLIB = @RANLIB@
+RPM = @RPM@
 SED = @SED@
 SET_MAKE = @SET_MAKE@
 SHELL = @SHELL@
@@ -382,6 +400,24 @@ top_srcdir = @top_srcdir@
 packextrasdir = @docdir@
 SUBDIRS = src man test po
 EXTRA_DIST = ABOUT-NLS README.md ChangeLog AUTHORS.md THANKS COPYING ReleaseNotes rmwrc.example
+@ax_install_files_enabled_TRUE@AX_INSTALL_FILES_CLEANFILES = \
+@ax_install_files_enabled_TRUE@$(top_builddir)/install_files
+
+@ax_dist_rpm_enabled_TRUE@AX_DIST_RPM_CLEANFILES =  \
+@ax_dist_rpm_enabled_TRUE@	$(top_builddir)/RPMChangeLog \
+@ax_dist_rpm_enabled_TRUE@	$(AX_INSTALL_FILES_CLEANFILES) \
+@ax_dist_rpm_enabled_TRUE@	$(top_builddir)/$(PACKAGE)-$(VERSION).spec \
+@ax_dist_rpm_enabled_TRUE@	$(top_builddir)/*.rpm \
+@ax_dist_rpm_enabled_TRUE@	$(top_builddir)/rpmmacros
+@ax_dist_rpm_enabled_TRUE@AX_DIST_RPM_EXTRA_DIST = $(top_builddir)/$(PACKAGE)-$(VERSION).spec $(top_builddir)/$(AX_RPM_SPEC_FILE).in
+@ax_dist_rpm_enabled_TRUE@AX_DIST_RPM_EXTRA_BIN_DISTS = rpm
+@ax_dist_rpm_enabled_TRUE@AX_DIST_RPM_EXTRA_SRC_DISTS = srpm
+@ax_dist_rpm_enable_upload_TRUE@@ax_dist_rpm_enabled_TRUE@AX_DIST_RPM_UPLOAD_BIN = upload-rpm
+@ax_dist_rpm_enable_upload_TRUE@@ax_dist_rpm_enabled_TRUE@AX_DIST_RPM_UPLOAD_SRC = upload-srpm
+@ax_dist_rpm_enable_upload_TRUE@@ax_dist_rpm_enabled_TRUE@AX_DIST_RPM_UPLOAD_TARGETS = \
+@ax_dist_rpm_enable_upload_TRUE@@ax_dist_rpm_enabled_TRUE@{rpm=>$(PACKAGE)-$(VERSION)-0.*.$(PLATFORM_SUFFIX).rpm} \
+@ax_dist_rpm_enable_upload_TRUE@@ax_dist_rpm_enabled_TRUE@{srpm=>$(PACKAGE)-$(VERSION)-0.src.rpm}
+
 packextras_DATA = $(EXTRA_DIST)
 ACLOCAL_AMFLAGS = --install -I build-aux/m4
 all: all-recursive
@@ -389,7 +425,7 @@ all: all-recursive
 .SUFFIXES:
 am--refresh: Makefile
 	@:
-$(srcdir)/Makefile.in: @MAINTAINER_MODE_TRUE@ $(srcdir)/Makefile.am  $(am__configure_deps)
+$(srcdir)/Makefile.in: @MAINTAINER_MODE_TRUE@ $(srcdir)/Makefile.am $(srcdir)/aminclude_static.am $(am__configure_deps)
 	@for dep in $?; do \
 	  case '$(am__configure_deps)' in \
 	    *$$dep*) \
@@ -411,6 +447,7 @@ Makefile: $(srcdir)/Makefile.in $(top_builddir)/config.status
 	    echo ' cd $(top_builddir) && $(SHELL) ./config.status $@ $(am__maybe_remake_depfiles)'; \
 	    cd $(top_builddir) && $(SHELL) ./config.status $@ $(am__maybe_remake_depfiles);; \
 	esac;
+$(srcdir)/aminclude_static.am $(am__empty):
 
 $(top_builddir)/config.status: $(top_srcdir)/configure $(CONFIG_STATUS_DEPENDENCIES)
 	$(SHELL) ./config.status --recheck
@@ -420,6 +457,8 @@ $(top_srcdir)/configure: @MAINTAINER_MODE_TRUE@ $(am__configure_deps)
 $(ACLOCAL_M4): @MAINTAINER_MODE_TRUE@ $(am__aclocal_m4_deps)
 	$(am__cd) $(srcdir) && $(ACLOCAL) $(ACLOCAL_AMFLAGS)
 $(am__aclocal_m4_deps):
+packaging/rmw-rpm.spec: $(top_builddir)/config.status $(top_srcdir)/packaging/rmw-rpm.spec.in
+	cd $(top_builddir) && $(SHELL) ./config.status $@
 install-packextrasDATA: $(packextras_DATA)
 	@$(NORMAL_INSTALL)
 	@list='$(packextras_DATA)'; test -n "$(packextrasdir)" || list=; \
@@ -608,6 +647,9 @@ distdir-am: $(DISTFILES)
 	      || exit 1; \
 	  fi; \
 	done
+	$(MAKE) $(AM_MAKEFLAGS) \
+	  top_distdir="$(top_distdir)" distdir="$(distdir)" \
+	  dist-hook
 	-test -n "$(am__skip_mode_fix)" \
 	|| find "$(distdir)" -type d ! -perm -755 \
 		-exec chmod u+rwx,go+rx {} \; -o \
@@ -779,7 +821,7 @@ maintainer-clean-generic:
 	@echo "it deletes files that may require special tools to rebuild."
 clean: clean-recursive
 
-clean-am: clean-generic mostlyclean-am
+clean-am: clean-generic clean-local mostlyclean-am
 
 distclean: distclean-recursive
 	-rm -f $(am__CONFIG_DISTCLEAN_FILES)
@@ -850,22 +892,264 @@ uninstall-am: uninstall-packextrasDATA
 
 .PHONY: $(am__recursive_targets) CTAGS GTAGS TAGS all all-am \
 	am--refresh check check-am clean clean-cscope clean-generic \
-	cscope cscopelist-am ctags ctags-am dist dist-all dist-bzip2 \
-	dist-gzip dist-lzip dist-shar dist-tarZ dist-xz dist-zip \
-	distcheck distclean distclean-generic distclean-tags \
-	distcleancheck distdir distuninstallcheck dvi dvi-am html \
-	html-am info info-am install install-am install-data \
-	install-data-am install-dvi install-dvi-am install-exec \
-	install-exec-am install-html install-html-am install-info \
-	install-info-am install-man install-packextrasDATA install-pdf \
-	install-pdf-am install-ps install-ps-am install-strip \
-	installcheck installcheck-am installdirs installdirs-am \
-	maintainer-clean maintainer-clean-generic mostlyclean \
-	mostlyclean-generic pdf pdf-am ps ps-am tags tags-am uninstall \
-	uninstall-am uninstall-packextrasDATA
+	clean-local cscope cscopelist-am ctags ctags-am dist dist-all \
+	dist-bzip2 dist-gzip dist-hook dist-lzip dist-shar dist-tarZ \
+	dist-xz dist-zip distcheck distclean distclean-generic \
+	distclean-tags distcleancheck distdir distuninstallcheck dvi \
+	dvi-am html html-am info info-am install install-am \
+	install-data install-data-am install-dvi install-dvi-am \
+	install-exec install-exec-am install-html install-html-am \
+	install-info install-info-am install-man \
+	install-packextrasDATA install-pdf install-pdf-am install-ps \
+	install-ps-am install-strip installcheck installcheck-am \
+	installdirs installdirs-am maintainer-clean \
+	maintainer-clean-generic mostlyclean mostlyclean-generic pdf \
+	pdf-am ps ps-am tags tags-am uninstall uninstall-am \
+	uninstall-packextrasDATA
 
 .PRECIOUS: Makefile
 
+
+@ax_install_files_enabled_TRUE@$(top_builddir)/install_files: do-mfstamp-recursive
+@ax_install_files_enabled_TRUE@	@if test "$(top_builddir)/mfstamp" -nt "$(top_builddir)/install_files"; then \
+@ax_install_files_enabled_TRUE@	cd $(top_builddir) && STAGING="$(PWD)/staging"; \
+@ax_install_files_enabled_TRUE@	$(MAKE) $(AM_MAKEFLAGS) DESTDIR="$$STAGING" install; \
+@ax_install_files_enabled_TRUE@	cd "$$STAGING" && find . ! -type d -print | \
+@ax_install_files_enabled_TRUE@	$(GAWK) ' \
+@ax_install_files_enabled_TRUE@	    /^\.\/usr\/local\/lib/ { \
+@ax_install_files_enabled_TRUE@		sub( /\.\/usr\/local\/lib/, "%{_libdir}" ); } \
+@ax_install_files_enabled_TRUE@	    /^\.\/usr\/local\/bin/ { \
+@ax_install_files_enabled_TRUE@		sub( /\.\/usr\/local\/bin/, "%{_bindir}" ); } \
+@ax_install_files_enabled_TRUE@	    /^\.\/usr\/local\/include/ { \
+@ax_install_files_enabled_TRUE@		sub( /\.\/usr\/local\/include/, "%{_includedir}" ); } \
+@ax_install_files_enabled_TRUE@	    /^\.\/usr\/local\/share/ { \
+@ax_install_files_enabled_TRUE@		sub( /\.\/usr\/local\/share/, "%{_datadir}" ); } \
+@ax_install_files_enabled_TRUE@	    /^\.\/usr\/local/ { \
+@ax_install_files_enabled_TRUE@		sub( /\.\/usr\/local/, "%{_prefix}" ); } \
+@ax_install_files_enabled_TRUE@	    /^\./ { sub( /\./, "" ); } \
+@ax_install_files_enabled_TRUE@	    /./ { print; }' > ../install_files; \
+@ax_install_files_enabled_TRUE@	rm -rf "$$STAGING"; \
+@ax_install_files_enabled_TRUE@	else \
+@ax_install_files_enabled_TRUE@	    echo "\`$(top_builddir)/install_files\' is up to date."; \
+@ax_install_files_enabled_TRUE@	fi
+
+@ax_install_files_enabled_TRUE@do-mfstamp-recursive:
+@ax_install_files_enabled_TRUE@	@set fnord $$MAKEFLAGS; amf=$$2; \
+@ax_install_files_enabled_TRUE@	dot_seen=no; \
+@ax_install_files_enabled_TRUE@	list='$(SUBDIRS)'; for subdir in $$list; do \
+@ax_install_files_enabled_TRUE@	  echo "Making do-mfstamp in $$subdir"; \
+@ax_install_files_enabled_TRUE@	  if test "$$subdir" = "."; then \
+@ax_install_files_enabled_TRUE@	    dot_seen=yes; \
+@ax_install_files_enabled_TRUE@	    local_target="do-mfstamp-am"; \
+@ax_install_files_enabled_TRUE@	  else \
+@ax_install_files_enabled_TRUE@	    local_target="do-mfstamp"; \
+@ax_install_files_enabled_TRUE@	  fi; \
+@ax_install_files_enabled_TRUE@	  (cd $$subdir && $(MAKE) $(AM_MAKEFLAGS) $$local_target) \
+@ax_install_files_enabled_TRUE@	   || case "$$amf" in *=*) exit 1;; *k*) fail=yes;; *) exit 1;; esac; \
+@ax_install_files_enabled_TRUE@	done; \
+@ax_install_files_enabled_TRUE@	if test "$$dot_seen" = "no"; then \
+@ax_install_files_enabled_TRUE@	  $(MAKE) $(AM_MAKEFLAGS) "do-mfstamp-am" || exit 1; \
+@ax_install_files_enabled_TRUE@	fi; test -z "$$fail"
+
+@ax_install_files_enabled_TRUE@$(top_builddir)/mfstamp:  do-mfstamp-recursive
+
+@ax_install_files_enabled_TRUE@do-mfstamp-am do-mfstamp: Makefile.in
+@ax_install_files_enabled_TRUE@	@echo "timestamp for all Makefile.in files" > $(top_builddir)/mfstamp
+@ax_install_files_enabled_TRUE@	@touch $@
+
+clean-local: clean-ax-install-files
+clean-ax-install-files:
+	-test -z "$(AX_INSTALL_FILES)" || rm -f $(AX_INSTALL_FILES)
+
+ ifeq ($(abs_builddir), $(abs_top_builddir)) # AX_DIST_RPM rules are to be effective in the top-level makefile only
+
+@ax_dist_rpm_enabled_TRUE@$(top_builddir)/RPMChangeLog: $(top_srcdir)/ChangeLog
+@ax_dist_rpm_enabled_TRUE@	LC_ALL=C $(GAWK) '/^[^0-9]/ { \
+@ax_dist_rpm_enabled_TRUE@                    if( $$1 == "*" ) $$1 = "-"; print; } \
+@ax_dist_rpm_enabled_TRUE@                /^$$/ { \
+@ax_dist_rpm_enabled_TRUE@                    print; } \
+@ax_dist_rpm_enabled_TRUE@                /^[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]/ { \
+@ax_dist_rpm_enabled_TRUE@                    if( stop ) exit; \
+@ax_dist_rpm_enabled_TRUE@		    split( $$1, date, "-" ); \
+@ax_dist_rpm_enabled_TRUE@		    $$1 = strftime( "%a %b %d %Y", \
+@ax_dist_rpm_enabled_TRUE@				    mktime( date[ 1 ] " " date[ 2 ] " " date [ 3 ] " 00 00 00" ) ); \
+@ax_dist_rpm_enabled_TRUE@                    print "* " $$0; } \
+@ax_dist_rpm_enabled_TRUE@		/Released $(PACKAGE)-/ { \
+@ax_dist_rpm_enabled_TRUE@		    gsub( /$(PACKAGE)-/, "", $$2 ); \
+@ax_dist_rpm_enabled_TRUE@		    split( $$2, ver, "." ); \
+@ax_dist_rpm_enabled_TRUE@		    split( "$(VERSION)", curr_ver, "." ); \
+@ax_dist_rpm_enabled_TRUE@		    if( ver[ 1 ] != curr_ver[ 1 ] || ver[ 2 ] != curr_ver[ 2 ] ) stop = 1; } \
+@ax_dist_rpm_enabled_TRUE@		END { \
+@ax_dist_rpm_enabled_TRUE@		    print "[Please see the ChangeLog file for older changes] - Ed."; }' \
+@ax_dist_rpm_enabled_TRUE@		$(top_srcdir)/ChangeLog > $(top_builddir)/RPMChangeLog
+
+@ax_dist_rpm_enabled_TRUE@spec: $(top_builddir)/$(PACKAGE)-$(VERSION).spec
+
+@ax_dist_rpm_enabled_TRUE@$(top_builddir)/$(PACKAGE)-$(VERSION).spec:	$(top_builddir)/$(AX_RPM_SPEC_FILE) $(top_builddir)/install_files $(top_builddir)/RPMChangeLog
+@ax_dist_rpm_enabled_TRUE@	@cat "$(top_builddir)/$(AX_RPM_SPEC_FILE)" \
+@ax_dist_rpm_enabled_TRUE@	| $(GAWK) -v files="$$files" \
+@ax_dist_rpm_enabled_TRUE@	    '{ print; } \
+@ax_dist_rpm_enabled_TRUE@	    /%defattr/ { while((getline < "install_files" ) > 0 ) { print; } }' \
+@ax_dist_rpm_enabled_TRUE@	    > "$(top_builddir)/$(PACKAGE)-$(VERSION).spec"
+@ax_dist_rpm_enabled_TRUE@	@cat "$(top_builddir)/RPMChangeLog" >> "$(top_builddir)/$(PACKAGE)-$(VERSION).spec"
+
+@ax_dist_rpm_enabled_TRUE@~/.rpmmacros:
+@ax_dist_rpm_enabled_TRUE@	@echo "~/.rpmmacros not found.  Creating one like the following:"; \
+@ax_dist_rpm_enabled_TRUE@	echo ""; \
+@ax_dist_rpm_enabled_TRUE@	echo "%packager       <YOUR NAME>"; \
+@ax_dist_rpm_enabled_TRUE@	echo ""; \
+@ax_dist_rpm_enabled_TRUE@	echo "%distribution   <YOUR_DISTRIBUTION>"; \
+@ax_dist_rpm_enabled_TRUE@	echo "%vendor         <YOUR_ORGANISATION>"; \
+@ax_dist_rpm_enabled_TRUE@	echo ""; \
+@ax_dist_rpm_enabled_TRUE@	echo "%_topdir        $$HOME/"; \
+@ax_dist_rpm_enabled_TRUE@	echo "%_tmppath       /tmp/"; \
+@ax_dist_rpm_enabled_TRUE@	echo ""; \
+@ax_dist_rpm_enabled_TRUE@	echo "%_rpmtopdir     %{_topdir}rpm/"; \
+@ax_dist_rpm_enabled_TRUE@	echo "%_builddir      %{_tmppath}"; \
+@ax_dist_rpm_enabled_TRUE@	echo "%_rpmdir        %{_rpmtopdir}RPMS/"; \
+@ax_dist_rpm_enabled_TRUE@	echo "%_sourcedir     %{_rpmtopdir}SOURCES/"; \
+@ax_dist_rpm_enabled_TRUE@	echo "%_specdir       %{_rpmtopdir}SPECS/"; \
+@ax_dist_rpm_enabled_TRUE@	echo "%_srcrpmdir     %{_rpmtopdir}SRPMS/"; \
+@ax_dist_rpm_enabled_TRUE@	echo ""; \
+@ax_dist_rpm_enabled_TRUE@	echo "Where <YOUR_NAME> is your name and <YOUR_DISTRIBUTION> is the"; \
+@ax_dist_rpm_enabled_TRUE@	echo "distribution you are building on (e.g. SuSE Linux 8.2 or"; \
+@ax_dist_rpm_enabled_TRUE@	echo "RedHat Linux 7.1). and <YOUR_ORGANISATION> is the organisation"; \
+@ax_dist_rpm_enabled_TRUE@	echo "you are associated with."; \
+@ax_dist_rpm_enabled_TRUE@	echo ""; \
+@ax_dist_rpm_enabled_TRUE@	echo "Running 'make create-rpmmacros' will create a ~/.rpmmacros file"; \
+@ax_dist_rpm_enabled_TRUE@	echo "for you and try to open it in an editor"; \
+@ax_dist_rpm_enabled_TRUE@	exit -1
+
+@ax_dist_rpm_enabled_TRUE@create-rpmmacros:
+@ax_dist_rpm_enabled_TRUE@	@if test -e ~/.rpmmacros; then \
+@ax_dist_rpm_enabled_TRUE@	    echo "Error: ~/.rpmmacros already exists"; \
+@ax_dist_rpm_enabled_TRUE@	    echo "Please remove it if you want to use"; \
+@ax_dist_rpm_enabled_TRUE@	    echo "this command to replace it"; \
+@ax_dist_rpm_enabled_TRUE@	    exit -1; \
+@ax_dist_rpm_enabled_TRUE@	else \
+@ax_dist_rpm_enabled_TRUE@	    echo "%packager       <YOUR NAME>" > ~/.rpmmacros; \
+@ax_dist_rpm_enabled_TRUE@	    echo "" >> ~/.rpmmacros; \
+@ax_dist_rpm_enabled_TRUE@	    echo "%distribution   <YOUR_DISTRIBUTION>" >> ~/.rpmmacros; \
+@ax_dist_rpm_enabled_TRUE@	    echo "%vendor         <YOUR_ORGANISATION>" >> ~/.rpmmacros; \
+@ax_dist_rpm_enabled_TRUE@	    echo "" >> ~/.rpmmacros; \
+@ax_dist_rpm_enabled_TRUE@	    echo "%_topdir        $$HOME/" >> ~/.rpmmacros; \
+@ax_dist_rpm_enabled_TRUE@	    echo "%_tmppath       /tmp/" >> ~/.rpmmacros; \
+@ax_dist_rpm_enabled_TRUE@	    echo "" >> ~/.rpmmacros; \
+@ax_dist_rpm_enabled_TRUE@	    echo "%_rpmtopdir     %{_topdir}rpm/" >> ~/.rpmmacros; \
+@ax_dist_rpm_enabled_TRUE@	    echo "%_builddir      %{_tmppath}" >> ~/.rpmmacros; \
+@ax_dist_rpm_enabled_TRUE@	    echo "%_rpmdir        %{_rpmtopdir}RPMS/" >> ~/.rpmmacros; \
+@ax_dist_rpm_enabled_TRUE@	    echo "%_sourcedir     %{_rpmtopdir}SOURCES/" >> ~/.rpmmacros; \
+@ax_dist_rpm_enabled_TRUE@	    echo "%_specdir       %{_rpmtopdir}SPECS/" >> ~/.rpmmacros; \
+@ax_dist_rpm_enabled_TRUE@	    echo "%_srcrpmdir     %{_rpmtopdir}SRPMS/" >> ~/.rpmmacros; \
+@ax_dist_rpm_enabled_TRUE@	    if test "x" = x; then \
+@ax_dist_rpm_enabled_TRUE@		echo "Error: no editor specified or found."; \
+@ax_dist_rpm_enabled_TRUE@		echo "Please edit ~/.rpmmacros manually"; \
+@ax_dist_rpm_enabled_TRUE@	    else \
+@ax_dist_rpm_enabled_TRUE@		 ~/.rpmmacros; \
+@ax_dist_rpm_enabled_TRUE@		exit $$?; \
+@ax_dist_rpm_enabled_TRUE@	    fi \
+@ax_dist_rpm_enabled_TRUE@	fi
+
+@ax_dist_rpm_enabled_TRUE@rpmmacros: ~/.rpmmacros
+@ax_dist_rpm_enabled_TRUE@	@cp -f ~/.rpmmacros rpmmacros;
+
+@ax_dist_rpm_enabled_TRUE@dist-rpm: rpm
+@ax_dist_rpm_enabled_TRUE@dist-srpm: srpm
+
+@ax_dist_rpm_enabled_TRUE@rpm: $(PACKAGE)-$(VERSION)-0.*.$(PLATFORM_SUFFIX).rpm
+@ax_dist_rpm_enabled_TRUE@srpm: $(PACKAGE)-$(VERSION)-0.src.rpm
+
+@ax_dist_rpm_enabled_TRUE@$(top_builddir)/$(PACKAGE)-$(VERSION)-0.*.$(PLATFORM_SUFFIX).rpm:	$(top_builddir)/rpmmacros $(top_builddir)/$(PACKAGE)-$(VERSION).tar.gz
+@ax_dist_rpm_enabled_TRUE@	@$(RPM) -tb $(top_builddir)/$(PACKAGE)-$(VERSION).tar.gz
+@ax_dist_rpm_enabled_TRUE@	@RPMDIR=`cat $(top_builddir)/rpmmacros | $(GAWK) '/%_rpmdir/ { print $$2; }'`; \
+@ax_dist_rpm_enabled_TRUE@	echo "$$RPMDIR" | $(EGREP) "%{.*}" > /dev/null 2>&1; \
+@ax_dist_rpm_enabled_TRUE@	EXIT=$$?; \
+@ax_dist_rpm_enabled_TRUE@	while test "$$EXIT" == "0"; do \
+@ax_dist_rpm_enabled_TRUE@		RPMDIR=`echo "$$RPMDIR" | $(GAWK) '/%{.*}/ \
+@ax_dist_rpm_enabled_TRUE@		{ match( $$0, /%{.*}/, macro ); \
+@ax_dist_rpm_enabled_TRUE@		  suffix = substr( $$0, RSTART + RLENGTH ); \
+@ax_dist_rpm_enabled_TRUE@		  gsub( /{|}/, "", macro[ 0 ] ); \
+@ax_dist_rpm_enabled_TRUE@		  while( ( getline < "$(top_builddir)/rpmmacros" ) > 0 ) \
+@ax_dist_rpm_enabled_TRUE@		  { if( $$1 == macro[ 0 ] ) { print $$2 suffix; exit; } } \
+@ax_dist_rpm_enabled_TRUE@		  exit 1; \
+@ax_dist_rpm_enabled_TRUE@		}'`; \
+@ax_dist_rpm_enabled_TRUE@		if test "$$?" == "0"; then \
+@ax_dist_rpm_enabled_TRUE@			echo "$$RPMDIR" | $(EGREP) "%{.*}" > /dev/null 2>&1; \
+@ax_dist_rpm_enabled_TRUE@			EXIT="$$?"; \
+@ax_dist_rpm_enabled_TRUE@		else \
+@ax_dist_rpm_enabled_TRUE@			EXIT="1"; \
+@ax_dist_rpm_enabled_TRUE@		fi; \
+@ax_dist_rpm_enabled_TRUE@	done; \
+@ax_dist_rpm_enabled_TRUE@	if test -d "$$RPMDIR"; then \
+@ax_dist_rpm_enabled_TRUE@	    for dir in `ls "$$RPMDIR"`; do \
+@ax_dist_rpm_enabled_TRUE@		ls "$${RPMDIR}$${dir}/$(PACKAGE)-$(VERSION)-0.$${dir}.rpm" > /dev/null 2>&1; \
+@ax_dist_rpm_enabled_TRUE@		if test "$$?" == "0"; then \
+@ax_dist_rpm_enabled_TRUE@		    cp "$${RPMDIR}$${dir}/$(PACKAGE)-$(VERSION)-0.$${dir}.rpm" "$(top_builddir)/$(PACKAGE)-$(VERSION)-0.$${dir}.$(PLATFORM_SUFFIX).rpm"; \
+@ax_dist_rpm_enabled_TRUE@		    found=true; \
+@ax_dist_rpm_enabled_TRUE@		fi; \
+@ax_dist_rpm_enabled_TRUE@	    done; \
+@ax_dist_rpm_enabled_TRUE@	    if ! $$found; then \
+@ax_dist_rpm_enabled_TRUE@		echo "RPM built but not found."; \
+@ax_dist_rpm_enabled_TRUE@		echo "Please copy it to $(top_builddir) manually."; \
+@ax_dist_rpm_enabled_TRUE@		exit 1; \
+@ax_dist_rpm_enabled_TRUE@	    fi; \
+@ax_dist_rpm_enabled_TRUE@	else \
+@ax_dist_rpm_enabled_TRUE@	    echo "RPM built but I cannot find RPM directory."; \
+@ax_dist_rpm_enabled_TRUE@	    echo "Please copy it to $(top_builddir) manually."; \
+@ax_dist_rpm_enabled_TRUE@	    exit 1; \
+@ax_dist_rpm_enabled_TRUE@	fi;
+
+@ax_dist_rpm_enabled_TRUE@$(top_builddir)/$(PACKAGE)-$(VERSION).tar.gz: $(top_builddir)/install_files
+@ax_dist_rpm_enabled_TRUE@	cd "$(top_builddir)" && $(MAKE) $(AM_MAKEFLAGS) dist-gzip
+
+@ax_dist_rpm_enabled_TRUE@$(PACKAGE)-$(VERSION)-0.src.rpm:	$(top_builddir)/rpmmacros $(top_builddir)/$(PACKAGE)-$(VERSION).tar.gz
+@ax_dist_rpm_enabled_TRUE@	@$(RPM) -ts $(top_builddir)/$(PACKAGE)-$(VERSION).tar.gz
+@ax_dist_rpm_enabled_TRUE@	@SRPMDIR=`cat rpmmacros | $(GAWK) '/%_srcrpmdir/ { print $$2; }'`; \
+@ax_dist_rpm_enabled_TRUE@	echo "$$SRPMDIR" | $(EGREP) "%{.*}" > /dev/null 2>&1; \
+@ax_dist_rpm_enabled_TRUE@	EXIT=$$?; \
+@ax_dist_rpm_enabled_TRUE@	while test "$$EXIT" == "0"; do \
+@ax_dist_rpm_enabled_TRUE@	    SRPMDIR=`echo "$$SRPMDIR" | $(GAWK) '/%{.*}/ \
+@ax_dist_rpm_enabled_TRUE@		{ match( $$0, /%{.*}/, macro ); \
+@ax_dist_rpm_enabled_TRUE@		  suffix = substr( $$0, RSTART + RLENGTH ); \
+@ax_dist_rpm_enabled_TRUE@		  gsub( /{|}/, "", macro[ 0 ] ); \
+@ax_dist_rpm_enabled_TRUE@		  while( ( getline < "rpmmacros" ) > 0 ) \
+@ax_dist_rpm_enabled_TRUE@		  { if( $$1 == macro[ 0 ] ) { print $$2 suffix; exit; } } \
+@ax_dist_rpm_enabled_TRUE@		  exit 1; \
+@ax_dist_rpm_enabled_TRUE@		}'`; \
+@ax_dist_rpm_enabled_TRUE@		if test "$$?" == "0"; then \
+@ax_dist_rpm_enabled_TRUE@			echo "$$SRPMDIR" | $(EGREP) "%{.*}" > /dev/null 2>&1; \
+@ax_dist_rpm_enabled_TRUE@			EXIT="$$?"; \
+@ax_dist_rpm_enabled_TRUE@		else \
+@ax_dist_rpm_enabled_TRUE@			EXIT="1"; \
+@ax_dist_rpm_enabled_TRUE@		fi; \
+@ax_dist_rpm_enabled_TRUE@	done; \
+@ax_dist_rpm_enabled_TRUE@	if test -d "$$SRPMDIR"; then \
+@ax_dist_rpm_enabled_TRUE@	    ls "$${SRPMDIR}/$(PACKAGE)-$(VERSION)-0.src.rpm" > /dev/null 2>&1; \
+@ax_dist_rpm_enabled_TRUE@	    if test "$$?" == "0"; then \
+@ax_dist_rpm_enabled_TRUE@		cp "$${SRPMDIR}/$(PACKAGE)-$(VERSION)-0.src.rpm" "$(top_builddir)/."; \
+@ax_dist_rpm_enabled_TRUE@		found=true; \
+@ax_dist_rpm_enabled_TRUE@	    fi; \
+@ax_dist_rpm_enabled_TRUE@	    if ! $$found; then \
+@ax_dist_rpm_enabled_TRUE@		echo "SRPM built but not found."; \
+@ax_dist_rpm_enabled_TRUE@		echo "Please copy it to $(top_builddir) manually."; \
+@ax_dist_rpm_enabled_TRUE@		exit 1; \
+@ax_dist_rpm_enabled_TRUE@	    fi; \
+@ax_dist_rpm_enabled_TRUE@	else \
+@ax_dist_rpm_enabled_TRUE@	     echo "SRPM built but I cannot find SRPM directory."; \
+@ax_dist_rpm_enabled_TRUE@	     echo "Please copy it to $(top_builddir) directory manually."; \
+@ax_dist_rpm_enabled_TRUE@	     exit 1; \
+@ax_dist_rpm_enabled_TRUE@	fi;
+
+# These rules are included unconditionally since we cannot conditionally add
+# dependencies.
+clean-local: clean-ax-dist-rpm
+clean-ax-dist-rpm:
+	-test -z "$(AX_DIST_RPM_CLEANFILES)" || rm -f $(AX_DIST_RPM_CLEANFILES)
+
+dist-hook: dist-hook-ax-dist-rpm
+dist-hook-ax-dist-rpm: $(AX_DIST_RPM_EXTRA_DIST)
+	-test -z "$(AX_DIST_RPM_EXTRA_DIST)" || cp $(AX_DIST_RPM_EXTRA_DIST) $(distdir)
+ endif # AX_RPM_DIST effective in top-level makefile only
 
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.
